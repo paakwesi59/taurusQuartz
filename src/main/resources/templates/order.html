@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="website icon" type="jfif" href="Images/img.jfif">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<title>Order Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+    }
+    form {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        font-size: 18px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .home-link {
+        text-decoration: none;
+        color: #333;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    .home-link:hover {
+        color: #28a745;
+    }
+    .icon {
+        margin-right: 8px;
+        margin-top: 3px;
+    }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+    <a class="active" th:href="@{/user-page}">Home</a>
+    <a th:href="@{/customercare}">Customer Care</a>
+</div>
+
+<div class="container">
+    <h2>Order form</h2>
+
+    <form th:action="@{/submitOrder}" th:object="${order}" method="POST">
+
+        <input type="text" id="customerName" name="customerName" required placeholder="Customer Name:">
+
+        <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Phone Number:">
+
+        <input type="email" id="email" name="email" required placeholder="Email:">
+
+        <label for="commodityName"><b>Select Commodity:</b></label><br>
+        <label for="commodityName">Rice:</label>
+        <input type="checkbox" id="rice" name="rice">
+        <label for="commodityName">Sugar:</label>
+        <input type="checkbox" id="sugar" name="sugar">
+        <label for="commodityName">Cooking Oil:</label>
+        <input type="checkbox" id="oil" name="oil">
+        <label for="commodityName">Cashew:</label>
+        <input type="checkbox" id="cashew" name="cashew">
+        <label for="commodityName">Corn:</label>
+        <input type="checkbox" id="corn" name="corn">
+        <label for="commodityName">Shea:</label>
+        <input type="checkbox" id="shea" name="shea">
+        <label for="commodityName">Wheat:</label>
+        <input type="checkbox" id="wheat" name="wheat">
+        <label for="commodityName">Soya:</label>
+        <input type="checkbox" id="soya" name="soya">
+        <br><br>
+
+        <label for="commodityName"><b>Transportation Services:</b></label><br>
+        <label for="commodityName">Haulage:</label>
+        <input type="checkbox" id="haulage" name="haulage">
+        <label for="commodityName">Evacuation:</label>
+        <input type="checkbox" id="evacuation" name="evacuation">
+        <label for="commodityName">Removal of household goods for shipment:</label>
+        <input type="checkbox" id="household" name="household">
+        <br><br>
+
+        <input type="number" id="quantity" name="quantity" required placeholder="Quantity:"><br><br>
+
+        <input type="number" id="weight" name="weight" required placeholder="Weight (in kg):"><br><br>
+
+        <input type="text" id="originAddress" name="originAddress" required placeholder="Origin Address:">
+
+        <input type="text" id="destinationAddress" name="destinationAddress" required placeholder="Destination Address:">
+
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+            <option value="standard">Standard</option>
+            <option value="express">Express</option>
+        </select>
+        <br><br>
+        <label for="date">Date:</label> <br>
+        <input type="date" id="deliveryDate" name="deliveryDate" required placeholder="Delivery Date:">
+        <br><br>
+        <label>Is it EPA approved?</label><br>
+        <input type="radio" id="epa_approved_yes" name="epaApproved" value="true" required>
+        <label for="epa_approved_yes">Yes</label><br>
+        <input type="radio" id="epa_approved_no" name="epaApproved" value="false" required>
+        <label for="epa_approved_no">No</label><br><br>
+
+        <label>Is it Fragile?</label><br>
+        <input type="radio" id="fragile_yes" name="fragile" value="true" required>
+        <label for="fragile_yes">Yes</label><br>
+        <input type="radio" id="fragile_no" name="fragile" value="false" required>
+        <label for="fragile_no">No</label><br><br>
+
+        <label>Is it Hazardous?</label><br>
+        <input type="radio" id="hazardous_yes" name="hazardous" value="true" required>
+        <label for="hazardous_yes">Yes</label><br>
+        <input type="radio" id="hazardous_no" name="hazardous" value="false" required>
+        <label for="hazardous_no">No</label><br><br>
+
+        <textarea id="description" name="description" rows="4" placeholder="Description:"></textarea>
+
+        <input type="submit" value="Submit Order">
+    </form>
+</div>
+</body>
+</html>

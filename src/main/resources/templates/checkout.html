@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="website icon" type="jfif" href="Images/img.jfif">
+    <title>Bill Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .bill-details {
+            margin-bottom: 20px;
+        }
+
+        .bill-details h2 {
+            margin-top: 0;
+        }
+
+        .payment-mode {
+            font-style: italic;
+            color: #888;
+        }
+
+        .payment-mode strong {
+            color: #333;
+        }
+
+        .message {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bill-details">
+            <h2>Bill Details</h2>
+            <p><strong>Check your E-ma</strong> <span id="orderId"></span></p>
+            <p><strong>Bill Date:</strong> <span id="billDate"></span></p>
+            <p><strong>Customer Name:</strong> <span id="customerName"></span></p>
+            <p><strong>Item Details:</strong></p>
+            <ul id="itemDetails">
+             
+                
+            </ul>
+            <p><strong>Total Amount:</strong> <span id="totalAmount">GHC</span></p>
+        </div>
+        <div class="payment-mode">
+            <p>Payment Mode: <strong>Payment on Delivery</strong></p>
+        </div>
+        <div class="message">
+            <p>Thank you for your order!</p>
+        </div>
+    </div>
+</body>
+</html>

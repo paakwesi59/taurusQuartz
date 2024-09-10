@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="website icon" type="jfif" href="Images/img.jfif">
+    <style>
+       /* Define your styles here */
+/* CSS styles */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* main css */
+main {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.order-list {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow-x: auto; /* Enable horizontal scroll if needed */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.order-item:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-item:hover {
+    background-color: #f0f0f0;
+}
+
+.calculate-btn,
+.add-to-batch-btn,
+.upload-btn,
+#generate-batch-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.calculate-btn:hover,
+.add-to-batch-btn:hover,
+.upload-btn:hover,
+#generate-batch-btn:hover {
+    background-color: #45a049;
+}
+
+.bill-input,
+.user-id-input,
+.email-input,
+.subject-input,
+.message-input,
+.truck-id-input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.bill-input:focus,
+.user-id-input:focus,
+.email-input:focus,
+.subject-input:focus,
+.message-input:focus,
+.truck-id-input:focus {
+    border-color: #4CAF50;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4CAF50;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+#loadingAnimation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+<main>
+    <div class="topnav">
+        <a class="active" th:href="@{/staff-page}">Home</a>
+    </div>
+
+    <h2>All Orders</h2>
+    <div class="container">
+        <div class="order-list">
+            <h2>Pending Orders</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>User ID/Reference</th>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Delivery Date</th>
+                    <th>Origin Address</th>
+                    <th>Destination Address</th>
+                    <th>Rice</th>
+                    <th>Sugar</th>
+                    <th>Oil</th>
+                    <th>Cashew</th>
+                    <th>Corn</th>
+                    <th>Shea</th>
+                    <th>Soy</th>
+                    <th>Wheat</th>
+                    <th>Evacuation</th>
+                    <th>Household Items</th>
+                    <th>Weight (kg)</th>
+                    <th>Quantity</th>
+                    <th>EPA Approved</th>
+                    <th>Hazardous</th>
+                    <th>Fragile</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="orderDTO, row : ${orders}" class="order-item">
+                    <td th:text="${orderDTO.userId}"></td>
+                    <td th:text="${orderDTO.orderId}"></td>
+                    <td th:text="${orderDTO.customerName}"></td>
+                    <td th:text="${orderDTO.phoneNumber}"></td>
+                    <td th:text="${orderDTO.email}"></td>
+                    <td th:text="${orderDTO.deliveryDate}"></td>
+                    <td th:text="${orderDTO.originAddress}"></td>
+                    <td th:text="${orderDTO.destinationAddress}"></td>
+                    <td th:text="${orderDTO.rice} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.sugar} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.oil} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.cashew} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.corn} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.shea} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.soya} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.wheat} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.evacuation} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.household} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.weight}"></td>
+                    <td th:text="${orderDTO.quantity}"></td>
+                    <td th:text="${orderDTO.epaApproved} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.hazardous} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.fragile} ? 'Yes' : 'No'"></td>
+                    <td th:text="${orderDTO.type}"></td>
+                    <td th:text="${orderDTO.description}"></td>
+                    <td th:text="${orderDTO.status}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="upload-form">
+            <h2>Send Bill to Client</h2>
+            <!-- Add your upload form elements here -->
+            <form id="billForm" action="/uploadbill" method="post">
+                <!-- Your form fields -->
+                <div id="loadingAnimation" class="hidden">
+                    <div class="spinner"></div>
+                </div>
+                <input type="text" class="user-id-input" placeholder="Enter User ID or Reference" name="userId"
+                       required>
+                <input type="email" class="email-input" placeholder="Enter Client's Email Address"
+                       name="clientEmail" required>
+                <input type="text" class="subject-input" placeholder="Enter Subject" name="subject" required>
+                <textarea class="message-input" placeholder="Enter Additional Message (Optional)" rows="4"
+                          name="message"></textarea>
+                <input type="number" class="bill-input" placeholder="Enter Calculated Bill Amount" name="billAmount"
+                       required>
+                <button type="submit" class="upload-btn">Send Bill to Client</button>
+            </form>
+            <div id="loadingAnimation" class="hidden">
+                <div class="spinner"></div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<script>
+    document.getElementById('billForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+        var formData = new FormData(this);
+
+        // Show loading animation
+        document.getElementById("loadingAnimation").classList.remove("hidden");
+
+        // Send form data to server using AJAX
+        fetch('/uploadbill', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Clear form fields or display success message
+                    alert('Bill sent successfully!');
+                    document.getElementById('billForm').reset(); // Reset form
+                } else {
+                    // Handle error response
+                    alert('Error sending bill. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error sending bill:', error);
+                alert('Error sending bill. Please try again.');
+            })
+            .finally(() => {
+                // Hide loading animation when process is complete
+                document.getElementById("loadingAnimation").classList.add("hidden");
+            });
+    });
+</script>
+
+<div class="container">
+    <div class="order-list">
+        <h2>Batch Orders</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Delivery Date</th>
+                <th>Origin Address</th>
+                <th>Destination Address</th>
+                <th>Add to Batch</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="orderDTO, row : ${orders}" class="order-item">
+                <td th:text="${orderDTO.orderId}"></td>
+                <td th:text="${orderDTO.deliveryDate}"></td>
+                <td th:text="${orderDTO.originAddress}"></td>
+                <td th:text="${orderDTO.destinationAddress}"></td>
+                <td><button class="add-to-batch-btn">Add to Batch</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="batch-form">
+        <h2>Batch Details</h2>
+        <div class="batch-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Order ID</th>
+                </tr>
+                </thead>
+                <tbody id="batch-orders-table"></tbody>
+            </table>
+        </div>
+        <input type="text" id="truck-id" placeholder="Truck/Vehicle ID" class="truck-id-input">
+        <button id="generate-batch-btn">Generate Batch</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addToBatchButtons = document.querySelectorAll('.add-to-batch-btn');
+        const batchOrdersTable = document.getElementById('batch-orders-table');
+        const truckIdInput = document.getElementById('truck-id');
+        const generateBatchBtn = document.getElementById('generate-batch-btn');
+
+        addToBatchButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const orderId = this.closest('tr').querySelector('td:first-child').textContent;
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${orderId}</td>
+                `;
+                batchOrdersTable.appendChild(newRow);
+            });
+        });
+
+        generateBatchBtn.addEventListener('click', function () {
+            const batchOrders = document.querySelectorAll('#batch-orders-table td');
+            const truckId = truckIdInput.value;
+
+            if (batchOrders.length > 0 && truckId.trim() !== '') {
+                // Send batch data to server using AJAX
+                const batchData = Array.from(batchOrders).map(td => td.textContent);
+                const formData = new FormData();
+                formData.append('truckId', truckId);
+                formData.append('batchData', JSON.stringify(batchData));
+
+                fetch('/generateBatch', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Batch generated successfully!');
+                            window.location.reload();
+                        } else {
+                            alert('Error generating batch. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error generating batch:', error);
+                        alert('Error generating batch. Please try again.');
+                    });
+            } else {
+                alert('Please add orders to the batch and provide a truck ID.');
+            }
+        });
+    });
+</script>
+</body>
+</html>

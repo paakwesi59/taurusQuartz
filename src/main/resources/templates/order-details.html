@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="website icon" type="jfif" href="Images/img.jfif">
+    <title>Order Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #008000;
+            padding: 20px;
+            background-color: #008000;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .order-details-btn {
+            background-color: #008000;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        .order-details-btn:hover {
+            background-color: #006400;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Details</h1>
+    <ul>
+        <li>ID: <strong th:text="${order.id}"></strong></li>
+        <li>Commodity Name: <strong th:text="${order.commodityName}"></strong></li>
+        <li>Origin: <strong th:text="${order.origin}"></strong></li>
+        <li>Destination: <strong th:text="${order.destination}"></strong></li>
+        <li>Delivery Date: <strong th:text="${#dates.format(order.deliveryDate, 'dd-MM-yyyy')}"></strong></li>
+        <li>Quantity: <strong th:text="${order.quantity}"></strong></li>
+        <li>Weight: <strong th:text="${order.weight}"></strong></li>
+        <li>Type: <strong th:text="${order.type}"></strong></li>
+        <li>Hazardous: <strong th:text="${order.hazardous}"></strong></li>

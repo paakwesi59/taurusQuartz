@@ -1,0 +1,348 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="website icon" type="jfif" href="Images/img.jfif">
+    <style>
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.wrapper .sidebar{
+    background: rgb(1, 56, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+}
+.wrapper .sidebar .profile{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.wrapper .sidebar .profile img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.wrapper .sidebar .profile h3{
+    color: #ffffff;
+    margin: 10px 0 5px;
+}
+
+.wrapper .sidebar .profile p{
+    color: rgb(206, 240, 253);
+    font-size: 14px;
+}
+
+.wrapper .sidebar ul li a{
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid green;
+    color:white;
+    font-size: 16px;
+    position: relative;
+}
+
+.wrapper .sidebar ul li a .icon{
+    color:white;
+    width: 30px;
+    display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+    color: green;
+
+    background:white;
+    border-right: 2px solid rgb(5, 104, 50);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon{
+    color: rgb(104, 126, 104);
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before{
+    display: block;
+}
+.wrapper .section{
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+}
+
+.wrapper .section .top_navbar{
+    background: rgb(75, 192, 75);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+
+}
+
+.wrapper .section .top_navbar .hamburger a{
+    font-size: 28px;
+    color: white;
+}
+
+.wrapper .section .top_navbar .hamburger a:hover{
+    color: whitesmoke;
+}
+
+body.active .wrapper .sidebar{
+    position: fixed;
+}
+
+body.active .wrapper .section{
+    margin-left: 0;
+    width: 100%;
+}
+
+
+
+
+
+/* main css */
+main {
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .order-list {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .order-item {
+        margin-bottom: 10px;
+    }
+    .calculate-btn {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+    .bill-input {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .user-id-input {
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .upload-form {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .upload-btn {
+        background-color: green;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    margin-left: 13%;
+
+}	
+
+
+     /* CSS for Staff Page */
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Form */
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    width: 300px;
+}
+
+button[type="submit"] {
+    padding: 8px 20px;
+    background-color: rgb(0, 128, 64);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: rgb(0, 128, 64);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+   
+       
+
+		
+	</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!--Top menu -->
+    <div class="sidebar">
+        <!--profile image & text-->
+        <div class="profile">
+            <img src="Images/image1.jfif" alt="image not available">
+            <h3>TAURUS QUARTZ</h3>
+           <p><div class="container">
+        <h2 style="color: #ffffff;">Welcome, [[${user.getFullname()}]]</h2>
+        
+        <span sec:authorize="isAuthenticated">
+         <a style="color: rgb(1, 254, 153);" th:href="@{/logout}">
+         Click to Logout
+        
+        </a>
+        
+        </span>
+
+    </div></p>
+        </div>
+        <!--menu item-->
+        <ul>
+            <li>
+                <a th:href="@{/staff-page}" class="active">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="item">Home</span>
+                </a>
+            </li>
+           
+            <li>
+                <a th:href="@{/livetracking}">
+                    <span class="icon"><i class="fas fa-truck"></i></span>
+                    <span class="item">Track Shipments</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="fas fa-clock"></i></span>
+                    <span class="item">Order History</span>
+                </a>
+            </li>
+           
+           
+            
+             <li>
+                <a th:href="@{/uploadbill}">
+                    <span class="icon"><i class="fas fa-calculator"></i></span>
+                    <span class="item">Upload Bill</span>
+                </a>
+            </li>
+            
+             
+            
+            
+        </ul>
+    </div>
+
+    <div class="top_navbar">
+        <div class="hamburger">
+            <a href="#">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+<main>
+
+</main>
+
+
+
+</body>
+</html>

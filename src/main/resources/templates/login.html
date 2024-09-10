@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+     <link rel="stylesheet" th:href="@{../css/style.css}">
+     <link rel="icon" th:href="@{/Images/image1.jfif}" type="image/x-icon">
+
+     <style>
+		 @charset "ISO-8859-1";
+
+body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(175, 201, 183);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin-left: 35%;
+            margin-top: 11%;
+            padding: 20px;
+            background-color: rgb(103, 192, 130);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgb(0, 128, 0);
+        }
+
+        h2 {
+            color: rgb(255, 255, 255);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: rgb(0, 128, 0);
+        }
+
+        input[type="submit"] {
+            background-color: rgb(0, 128, 64);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .message {
+            background-color: rgb(81, 242, 137);
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+       tq{
+	margin-top: auto;
+	   }
+	 </style>
+</head>
+<body>
+	<div class="tq" style="text-align: center; font-family: 'Arial', sans-serif;">
+    <h1 style="color: rgb(22, 107, 20); font-size: 36px; font-weight: bold;">TAURUS QUARTZ</h1>
+</div>
+
+	
+    <div class="container">
+        <div class="message" th:if="${param.error}">
+           Invalid Username or Password
+        </div>
+        <div class="message" th:if="${param.logout}">
+           Logout Successfuly
+        </div>
+        
+        <h2>Login Page</h2>
+        <form 
+         th:action="@{/login}"
+         method="post"
+         
+        >
+            
+            
+            <div class="form-group">
+                <label for="username">Email:</label>
+                <input  type="email" id="username" name="username" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input  type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <input type="submit" value="Login">
+        </form><br>
+<a th:href="@{/registration}" style="text-decoration: none; color: #007bff;" onmouseover="this.style.color='#0056b3'" onmouseout="this.style.color='#007bff'">Create an Account</a>
+
+    </div>
+</body>
+</html>

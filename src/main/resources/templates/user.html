@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+<link rel="icon" th:href="@{/Images/image1.jfif}" type="image/x-icon">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">y
+    <style>
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    background: rgb(1, 46, 2);
+    color: rgb(185, 185, 185);
+}
+
+.wrapper .sidebar{
+    background: rgb(1, 56, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+}
+.wrapper .sidebar .profile{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.wrapper .sidebar .profile img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.wrapper .sidebar .profile h3{
+    color: #ffffff;
+    margin: 10px 0 5px;
+}
+
+.wrapper .sidebar .profile p{
+    color: rgb(206, 240, 253);
+    font-size: 14px;
+}
+
+.wrapper .sidebar ul li a{
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid green;
+    color:white;
+    font-size: 16px;
+    position: relative;
+}
+
+.wrapper .sidebar ul li a .icon{
+    color:white;
+    width: 30px;
+    display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+    color: green;
+
+    background:white;
+    border-right: 2px solid rgb(5, 104, 50);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon{
+    color: rgb(104, 126, 104);
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before{
+    display: block;
+}
+.wrapper .section{
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+}
+
+.wrapper .section .top_navbar{
+    background: rgb(75, 192, 75);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+
+}
+
+.wrapper .section .top_navbar .hamburger a{
+    font-size: 28px;
+    color: white;
+}
+
+.wrapper .section .top_navbar .hamburger a:hover{
+    color: whitesmoke;
+}
+
+body.active .wrapper .sidebar{
+    position: fixed;
+}
+
+body.active .wrapper .section{
+    margin-left: 0;
+    width: 100%;
+}
+
+
+
+
+
+/* main css */
+main {
+
+    margin-left: 20%;
+
+}	
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: #ecececdb;
+}
+
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 1250px;
+    margin: 150px auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.card-list .card-item {
+    background: #fff;
+    padding: 26px;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+    list-style: none;
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: border 0.5s ease;
+}
+
+.card-list .card-item:hover {
+    border: 2px solid #000;
+}
+
+.card-list .card-item img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.card-list span {
+    display: inline-block;
+    background: #F7DFF5;
+    margin-top: 32px;
+    padding: 8px 15px;
+    font-size: 0.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.card-list .developer {
+    background-color: #F7DFF5; 
+    color: #B22485;
+}   
+
+.card-list .designer {
+    background-color: #d1e8ff;
+    color: #2968a8;
+}
+
+.card-list .editor {
+    background-color: #d6f8d6; 
+    color: #205c20;
+}
+
+.card-item h3 {
+    color: #000;
+    font-size: 1.438rem;
+    margin-top: 28px;
+    font-weight: 600;
+}
+
+.card-item .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-35deg);
+    height: 40px;
+    width: 40px;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-top: 40px;
+    transition: 0.2s ease;
+}
+
+.card-list .card-item:hover .arrow  {
+    background: #000;
+    color: #fff; 
+}
+
+@media (max-width: 1200px) {
+    .card-list .card-item {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .card-list {
+        margin: 0 auto;
+    }
+}
+		
+	</style>
+</head>
+<body>
+
+<div class="wrapper">
+    <!--Top menu -->
+    <div class="sidebar">
+        <!--profile image & text-->
+        <div class="profile">
+         <img th:src="@{/Images/image1.jfif}" alt="Example Image">
+            <h3>TAURUS QUARTZ</h3>
+           <p><div class="container">
+        <h2>Welcome, [[${user.getFullname()}]]</h2>
+        
+        <span sec:authorize="isAuthenticated">
+        <a style="color: rgb(1, 254, 153);" th:href="@{/logout}">
+         Click to Logout
+        
+        </a>
+        
+        </span>
+
+    </div></p>
+        </div>
+        <!--menu item-->
+        <ul>
+            <li>
+                <a href="#" class="active">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{customercare}">
+                    <span class="icon"><i class="fas fa-phone"></i></span>
+                    <span class="item">Customer care</span>
+                </a>
+            </li>
+            <li>
+               <a th:href="@{/shipment}">
+                    <span class="icon"><i class="fas fa-truck"></i></span>
+                    <span class="item">Track Shipments</span>
+                </a>
+            </li>
+            <li>
+              <a th:href="@{orderhistory}">
+                    <span class="icon"><i class="fas fa-clock"></i></span>
+                    <span class="item">Order History</span>
+                </a>
+            </li>
+            
+         
+           
+            <li>
+                <a th:href="@{order}">
+                    <span class="icon"><i class="fas fa-cart-plus"></i></span>
+                    <span class="item">Order</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="top_navbar">
+        <div class="hamburger">
+            <a href="#">
+                <i class="fas fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+<main>
+	<center><h1 style="color: #000;"></h1></center>
+	
+	</div>
+    <div class="card-list">
+        <a th:href="@{/order}" class="card-item">
+              <img th:src="@{/Images/import.jpg}" alt="image not available">
+            <span class="developer">EDIBLES</span>
+            <h3>COMMODITIES EXCHANGE/<br>TRADING/IMPORT&EXPORT
+			</h3>
+			<br>
+			<li>RICE</li>	
+			<li>SUGAR</li>
+				<li>COOKING OIL</li>	
+				<li>CASHEW</li>	
+				<li>SHEA</li>	
+				<li>CORN</li>	
+				<li>WHEAT</li>	
+				<li>SOYA</li>
+					
+			
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+     <a th:href="@{/order}" class="card-item">
+            <img th:src="@{/Images/container.jpg}" alt="image not available">
+            <span class="designer">Transportation</span>
+            <h3>Container.</h3>
+            	<br>
+			<li>HAULAGE</li>	
+			<li>EVACUATION</li>
+				<li>REMOVAL OF HOUSEHOLD GOOD FOR SHIPMENT</li>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+       <a th:href="@{/order}" class="card-item">
+           <img th:src="@{/Images/warehouse.jpeg}" alt="image not available">
+            <span class="editor">Public&Contract Warehousing</span>
+            <h3>Warehousing</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+    </div>
+     <div class="card-list">
+<a th:href="@{/order}" class="card-item">             
+	        <img th:src="@{/Images/petrol.jpeg}" alt="image not available">
+            <span class="developer">FUEL</span>
+            <h3>COMMODITIES EXCHANGE/<br>TRADING/IMPORT&EXPORT</h3>
+            <br>
+            <li>AUTOMOTIVE GAS OIL(AGO)</li>	
+				<li>PREMUIM MOTOR SPIRIT (PMS)</li>	
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+        <a th:href="@{/order}" class="card-item">
+            <img th:src="@{/Images/container.jpg}" alt="image not available">
+            <span class="designer">Dealers of ISO & Offshore Containers</span>
+            <h3>Container.</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+       <a th:href="@{/order}" class="card-item">
+           <img th:src="@{/Images/box.jpg}" alt="image not available">
+            <span class="editor">Box</span>
+            <h3>General Supplies</h3>
+            <div class="arrow">
+                <i class="fas fa-arrow-right card-icon"></i>
+            </div>
+        </a>
+    </div>
+
+
+
+</main>
+
+
+
+</body>
+</html>
